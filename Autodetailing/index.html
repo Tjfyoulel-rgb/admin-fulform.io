@@ -1,0 +1,979 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Heick & Co. Detailing – Mobile Auto Detailing · Crestwood / Louisville, KY</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --black: #0a0a0a;
+      --dark: #111113;
+      --card: #17171a;
+      --border: #2a2a2f;
+      --blue: #2a6fba;
+      --blue-light: #4a8fd4;
+      --blue-dark: #1a4f8a;
+      --white: #f0ede8;
+      --muted: #888;
+      --font-display: 'Bebas Neue', sans-serif;
+      --font-body: 'DM Sans', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--black);
+      color: var(--white);
+      font-family: var(--font-body);
+      font-weight: 300;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 2.5rem;
+      background: rgba(10,10,10,0.92);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-logo {
+      display: flex;
+      flex-direction: column;
+      line-height: 1;
+      text-decoration: none;
+    }
+
+    .nav-logo-top {
+      font-family: var(--font-display);
+      font-size: 1.4rem;
+      color: var(--white);
+      letter-spacing: 0.04em;
+    }
+
+    .nav-logo-sub {
+      font-size: 0.62rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--blue-light);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+      align-items: center;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.82rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--blue-light); }
+
+    .nav-cta {
+      background: var(--blue) !important;
+      color: var(--white) !important;
+      padding: 0.5rem 1.2rem !important;
+      font-weight: 500 !important;
+      transition: background 0.2s !important;
+    }
+
+    .nav-cta:hover { background: var(--blue-light) !important; }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 8rem 2.5rem 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 55% 55% at 75% 45%, rgba(42,111,186,0.12) 0%, transparent 70%),
+        radial-gradient(ellipse 35% 50% at 15% 85%, rgba(42,111,186,0.06) 0%, transparent 60%);
+    }
+
+    .hero-grid {
+      position: absolute;
+      inset: 0;
+      background-image:
+        repeating-linear-gradient(90deg, transparent, transparent 60px, rgba(255,255,255,0.012) 60px, rgba(255,255,255,0.012) 61px),
+        repeating-linear-gradient(0deg, transparent, transparent 60px, rgba(255,255,255,0.012) 60px, rgba(255,255,255,0.012) 61px);
+    }
+
+    /* water drop texture overlay */
+    .hero-texture {
+      position: absolute;
+      inset: 0;
+      opacity: 0.03;
+      background-image: radial-gradient(circle, #fff 1px, transparent 1px);
+      background-size: 28px 28px;
+    }
+
+    .hero-content {
+      position: relative;
+      max-width: 680px;
+      animation: fadeUp 0.9s ease both;
+    }
+
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--blue-light);
+      margin-bottom: 1.2rem;
+    }
+
+    .hero-eyebrow::before {
+      content: '';
+      display: block;
+      width: 2rem;
+      height: 1px;
+      background: var(--blue-light);
+    }
+
+    h1 {
+      font-family: var(--font-display);
+      font-size: clamp(3.5rem, 9vw, 7.5rem);
+      line-height: 0.9;
+      letter-spacing: 0.02em;
+      margin-bottom: 0.5rem;
+    }
+
+    h1 .co {
+      color: var(--blue-light);
+    }
+
+    .hero-detailing {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 4vw, 3rem);
+      letter-spacing: 0.22em;
+      color: var(--muted);
+      margin-bottom: 1.6rem;
+    }
+
+    .hero-sub {
+      font-size: 1rem;
+      color: var(--muted);
+      max-width: 440px;
+      margin-bottom: 2.5rem;
+      line-height: 1.75;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      background: var(--blue);
+      color: var(--white);
+      padding: 0.9rem 2rem;
+      font-family: var(--font-body);
+      font-size: 0.88rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s;
+      display: inline-block;
+    }
+
+    .btn-primary:hover { background: var(--blue-light); transform: translateY(-1px); }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--white);
+      padding: 0.9rem 2rem;
+      font-family: var(--font-body);
+      font-size: 0.88rem;
+      font-weight: 400;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border: 1px solid var(--border);
+      cursor: pointer;
+      transition: border-color 0.2s, color 0.2s;
+      display: inline-block;
+    }
+
+    .btn-outline:hover { border-color: var(--blue-light); color: var(--blue-light); }
+
+    /* ── TRUST BAR ── */
+    .trust-bar {
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 1.2rem 2.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 2.5rem;
+      flex-wrap: wrap;
+      background: var(--dark);
+    }
+
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.8rem;
+      color: var(--muted);
+      letter-spacing: 0.04em;
+    }
+
+    .trust-item .dot { color: var(--blue-light); }
+
+    /* ── SECTIONS ── */
+    section { padding: 5.5rem 2.5rem; }
+
+    .section-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--blue-light);
+      margin-bottom: 0.6rem;
+    }
+
+    h2 {
+      font-family: var(--font-display);
+      font-size: clamp(2.6rem, 5vw, 4rem);
+      letter-spacing: 0.03em;
+      line-height: 1;
+      margin-bottom: 1rem;
+    }
+
+    .section-intro {
+      color: var(--muted);
+      max-width: 500px;
+      font-size: 0.95rem;
+      margin-bottom: 3rem;
+      line-height: 1.7;
+    }
+
+    /* ── PRICING ── */
+    #pricing { background: var(--dark); }
+
+    /* SPECIAL CALLOUT */
+    .special-banner {
+      background: linear-gradient(135deg, var(--blue-dark) 0%, var(--blue) 100%);
+      border: 1px solid var(--blue-light);
+      padding: 1.8rem 2rem;
+      margin-bottom: 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .special-banner::before {
+      content: '★ SPECIAL';
+      position: absolute;
+      top: 0.5rem;
+      right: -2rem;
+      background: rgba(255,255,255,0.15);
+      font-family: var(--font-display);
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      padding: 0.2rem 3rem;
+      transform: rotate(30deg);
+      transform-origin: center;
+    }
+
+    .special-left h3 {
+      font-family: var(--font-display);
+      font-size: 1.8rem;
+      letter-spacing: 0.04em;
+      margin-bottom: 0.3rem;
+    }
+
+    .special-left p {
+      font-size: 0.85rem;
+      opacity: 0.8;
+      line-height: 1.5;
+    }
+
+    .special-price {
+      font-family: var(--font-display);
+      font-size: 2.8rem;
+      letter-spacing: 0.02em;
+      white-space: nowrap;
+    }
+
+    .special-price span {
+      font-family: var(--font-body);
+      font-size: 0.8rem;
+      opacity: 0.75;
+      letter-spacing: 0.05em;
+      display: block;
+      text-align: right;
+    }
+
+    /* PRICING TABLE */
+    .pricing-table {
+      width: 100%;
+      border-collapse: collapse;
+      border: 1px solid var(--border);
+    }
+
+    .pricing-table tr {
+      border-bottom: 1px solid var(--border);
+      transition: background 0.2s;
+    }
+
+    .pricing-table tr:last-child { border-bottom: none; }
+    .pricing-table tr:hover { background: #1a1a1e; }
+
+    .pricing-table td {
+      padding: 1.1rem 1.5rem;
+      font-size: 0.9rem;
+    }
+
+    .pricing-table .service-name-td {
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      letter-spacing: 0.04em;
+    }
+
+    .pricing-table .service-note {
+      font-size: 0.75rem;
+      color: var(--muted);
+      display: block;
+      font-family: var(--font-body);
+      font-weight: 300;
+      letter-spacing: 0;
+      margin-top: 0.15rem;
+    }
+
+    .pricing-table .price-td {
+      text-align: right;
+      font-family: var(--font-display);
+      font-size: 1.4rem;
+      letter-spacing: 0.04em;
+      color: var(--blue-light);
+      white-space: nowrap;
+    }
+
+    .pricing-note {
+      margin-top: 1rem;
+      font-size: 0.78rem;
+      color: var(--muted);
+      font-style: italic;
+    }
+
+    /* ── SERVICES DETAIL ── */
+    .services-cols {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5px;
+      background: var(--border);
+      border: 1px solid var(--border);
+    }
+
+    @media (max-width: 600px) { .services-cols { grid-template-columns: 1fr; } }
+
+    .services-col {
+      background: var(--card);
+      padding: 2rem 1.8rem;
+    }
+
+    .services-col h3 {
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      letter-spacing: 0.08em;
+      color: var(--blue-light);
+      margin-bottom: 1.2rem;
+      padding-bottom: 0.8rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .services-col ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+
+    .services-col li {
+      font-size: 0.88rem;
+      color: var(--muted);
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .services-col li::before {
+      content: '';
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--blue);
+      flex-shrink: 0;
+    }
+
+    /* ── QUOTE FORM ── */
+    #quote { background: var(--dark); }
+
+    .quote-wrap {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 4rem;
+      align-items: start;
+      max-width: 980px;
+    }
+
+    @media (max-width: 700px) { .quote-wrap { grid-template-columns: 1fr; gap: 2.5rem; } }
+
+    .quote-info p {
+      color: var(--muted);
+      font-size: 0.9rem;
+      line-height: 1.75;
+      margin-bottom: 1.5rem;
+    }
+
+    .contact-pill {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      background: var(--card);
+      border: 1px solid var(--border);
+      padding: 0.8rem 1.1rem;
+      margin-bottom: 0.8rem;
+      font-size: 0.88rem;
+      color: var(--white);
+      text-decoration: none;
+      transition: border-color 0.2s;
+    }
+
+    .contact-pill:hover { border-color: var(--blue-light); }
+    .contact-pill .ci { color: var(--blue-light); font-size: 1rem; }
+    .contact-pill small { color: var(--muted); font-size: 0.72rem; letter-spacing: 0.06em; text-transform: uppercase; display: block; }
+
+    /* FORM */
+    .quote-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    @media (max-width: 480px) { .form-row { grid-template-columns: 1fr; } }
+
+    .form-group { display: flex; flex-direction: column; gap: 0.4rem; }
+
+    label {
+      font-size: 0.7rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    input, select, textarea {
+      background: var(--card);
+      border: 1px solid var(--border);
+      color: var(--white);
+      padding: 0.75rem 1rem;
+      font-family: var(--font-body);
+      font-size: 0.9rem;
+      font-weight: 300;
+      outline: none;
+      transition: border-color 0.2s;
+      width: 100%;
+      -webkit-appearance: none;
+      border-radius: 0;
+    }
+
+    input:focus, select:focus, textarea:focus { border-color: var(--blue-light); }
+    select option { background: var(--dark); }
+    textarea { resize: vertical; min-height: 80px; }
+
+    /* PHOTO UPLOAD */
+    .photo-upload-area {
+      border: 2px dashed var(--border);
+      background: var(--card);
+      padding: 2rem 1rem;
+      text-align: center;
+      cursor: pointer;
+      transition: border-color 0.2s, background 0.2s;
+      position: relative;
+    }
+
+    .photo-upload-area:hover, .photo-upload-area.dragover {
+      border-color: var(--blue-light);
+      background: rgba(42,111,186,0.06);
+    }
+
+    .photo-upload-area input[type="file"] {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      cursor: pointer;
+      width: 100%;
+      height: 100%;
+    }
+
+    .upload-icon { font-size: 2rem; margin-bottom: 0.5rem; }
+
+    .upload-label {
+      font-size: 0.85rem;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    .upload-label strong { color: var(--blue-light); }
+
+    .photo-previews {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 0.8rem;
+    }
+
+    .photo-preview {
+      width: 70px;
+      height: 70px;
+      object-fit: cover;
+      border: 1px solid var(--border);
+    }
+
+    .photo-count {
+      font-size: 0.75rem;
+      color: var(--blue-light);
+      margin-top: 0.4rem;
+    }
+
+    .form-submit { width: 100%; margin-top: 0.5rem; }
+
+    .form-success {
+      display: none;
+      background: rgba(42,111,186,0.1);
+      border: 1px solid var(--blue);
+      padding: 2rem;
+      text-align: center;
+    }
+
+    .form-success.show { display: block; }
+    .form-success p { color: var(--blue-light); font-size: 1rem; line-height: 1.6; }
+    .form-success .check { font-size: 2rem; margin-bottom: 0.8rem; display: block; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--dark);
+      border-top: 1px solid var(--border);
+      padding: 2.5rem 2.5rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    @media (max-width: 600px) { footer { grid-template-columns: 1fr; text-align: center; } }
+
+    .footer-brand .f-name {
+      font-family: var(--font-display);
+      font-size: 1.8rem;
+      letter-spacing: 0.04em;
+      margin-bottom: 0.2rem;
+    }
+
+    .footer-brand p { font-size: 0.8rem; color: var(--muted); }
+
+    .footer-contact { text-align: right; }
+    @media (max-width: 600px) { .footer-contact { text-align: center; } }
+
+    .footer-contact a {
+      display: block;
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.85rem;
+      margin-bottom: 0.3rem;
+      transition: color 0.2s;
+    }
+
+    .footer-contact a:hover { color: var(--blue-light); }
+
+    .footer-bottom {
+      border-top: 1px solid var(--border);
+      padding: 1rem 2.5rem;
+      text-align: center;
+      font-size: 0.72rem;
+      color: var(--muted);
+    }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    @media (max-width: 640px) {
+      nav { padding: 1rem 1.5rem; }
+      section { padding: 4rem 1.5rem; }
+      .trust-bar { padding: 1rem 1.5rem; gap: 1.2rem; }
+      footer { padding: 2rem 1.5rem; }
+      .footer-bottom { padding: 1rem 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#" class="nav-logo">
+      <span class="nav-logo-top">Heick &amp; Co.</span>
+      <span class="nav-logo-sub">Detailing</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#pricing">Pricing</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#quote" class="nav-cta">Get a Quote</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-grid"></div>
+    <div class="hero-texture"></div>
+    <div class="hero-content">
+      <div class="hero-eyebrow">Crestwood &amp; Louisville, KY · Mobile Detailing</div>
+      <h1>Heick <span class="co">&amp; Co.</span></h1>
+      <div class="hero-detailing">Detailing</div>
+      <p class="hero-sub">
+        Professional mobile detailing brought right to your door. We come to you — at home, at work, wherever you are.
+      </p>
+      <div class="hero-actions">
+        <a href="#quote" class="btn-primary">Request a Quote</a>
+        <a href="#pricing" class="btn-outline">View Pricing</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRUST BAR -->
+  <div class="trust-bar">
+    <div class="trust-item"><span class="dot">●</span> Mobile — We Come to You</div>
+    <div class="trust-item"><span class="dot">●</span> Crestwood / Louisville Area</div>
+    <div class="trust-item"><span class="dot">●</span> Text or Call to Book</div>
+    <div class="trust-item"><span class="dot">●</span> (502) 665-9349</div>
+  </div>
+
+  <!-- PRICING -->
+  <section id="pricing">
+    <div class="section-label">Transparent Pricing</div>
+    <h2>What's It Cost?</h2>
+    <p class="section-intro">Pricing varies by vehicle size and condition. Upload photos when you request a quote and we'll give you an exact number — no surprises.</p>
+
+    <!-- CAR BREAK-IN SPECIAL -->
+    <div class="special-banner reveal">
+      <div class="special-left">
+        <h3>🚐 SUV / Minivan Special</h3>
+        <p>Full interior & exterior detail for larger vehicles.<br />Includes everything in our Full Detail package.</p>
+      </div>
+      <div class="special-price">
+        From $300
+        <span>Starting price · exact quote based on condition</span>
+      </div>
+    </div>
+
+    <table class="pricing-table reveal">
+      <tr>
+        <td class="service-name-td">
+          Express Detail
+          <span class="service-note">Quick refresh — wash, vacuum, windows, tire dress</span>
+        </td>
+        <td class="price-td">$90</td>
+      </tr>
+      <tr>
+        <td class="service-name-td">
+          Interior or Exterior Only
+          <span class="service-note">Deep clean on one area of the vehicle</span>
+        </td>
+        <td class="price-td">$150</td>
+      </tr>
+      <tr>
+        <td class="service-name-td">
+          Full Detail
+          <span class="service-note">Complete interior + exterior — our most popular service</span>
+        </td>
+        <td class="price-td">$250</td>
+      </tr>
+      <tr>
+        <td class="service-name-td">
+          Paint Correction &amp; Sealant
+          <span class="service-note">Machine polish removes swirls, scratches &amp; oxidation</span>
+        </td>
+        <td class="price-td">$400</td>
+      </tr>
+      <tr>
+        <td class="service-name-td">
+          3-Year Ceramic Coating
+          <span class="service-note">Long-term protection with full decontamination prep</span>
+        </td>
+        <td class="price-td">$600</td>
+      </tr>
+    </table>
+    <p class="pricing-note">* All prices are starting rates for standard-size vehicles in average condition. Larger vehicles, heavy soiling, or pet hair may affect final pricing. Submit photos for an exact quote.</p>
+  </section>
+
+  <!-- SERVICES DETAIL -->
+  <section id="services" style="background: var(--dark);">
+    <div class="section-label">What's Included</div>
+    <h2>Services</h2>
+    <p class="section-intro">Every service is performed on-location with professional-grade products and equipment.</p>
+    <div class="services-cols reveal">
+      <div class="services-col">
+        <h3>Interior Services</h3>
+        <ul>
+          <li>Vacuum</li>
+          <li>Steam Clean</li>
+          <li>Stain Removal</li>
+          <li>Carpet &amp; Upholstery Shampoo</li>
+          <li>Leather Cleaning &amp; Conditioning</li>
+          <li>Odor Elimination Treatment</li>
+        </ul>
+      </div>
+      <div class="services-col">
+        <h3>Exterior Services</h3>
+        <ul>
+          <li>Hand Wash &amp; Foam Bath</li>
+          <li>Paint Decontamination</li>
+          <li>Trim Restoration &amp; Conditioning</li>
+          <li>Ceramic Coating</li>
+          <li>Wax</li>
+          <li>Headlight Restoration</li>
+          <li>Engine Bay Cleaning</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUOTE FORM -->
+  <section id="quote">
+    <div class="quote-wrap">
+      <div class="quote-info reveal">
+        <div class="section-label">Free Quote</div>
+        <h2>Request a Quote</h2>
+        <p>
+          Tell us about your vehicle, upload a few photos, and we'll get back to you with an exact price — usually within a few hours. No obligation.
+        </p>
+        <p style="font-size:0.82rem;">
+          Photos help a lot — especially interior shots, any stains, and the overall exterior condition. The more we can see, the more accurate your quote will be.
+        </p>
+        <a href="tel:5026659349" class="contact-pill">
+          <span class="ci">📞</span>
+          <div>
+            <small>Call or Text</small>
+            (502) 665-9349
+          </div>
+        </a>
+        <a href="mailto:heick.co@gmail.com" class="contact-pill">
+          <span class="ci">✉️</span>
+          <div>
+            <small>Email</small>
+            heick.co@gmail.com
+          </div>
+        </a>
+        <a href="https://instagram.com/heick.codetailing" target="_blank" class="contact-pill">
+          <span class="ci">📸</span>
+          <div>
+            <small>Instagram</small>
+            @heick.codetailing
+          </div>
+        </a>
+      </div>
+
+      <div class="reveal">
+        <form class="quote-form" id="quoteForm">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="fname">First Name</label>
+              <input type="text" id="fname" placeholder="First" required />
+            </div>
+            <div class="form-group">
+              <label for="lname">Last Name</label>
+              <input type="text" id="lname" placeholder="Last" required />
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="phone">Phone / Best Way to Reach You</label>
+            <input type="tel" id="phone" placeholder="(502) 555-0123" required />
+          </div>
+          <div class="form-group">
+            <label for="vehicle">Vehicle (Year, Make, Model)</label>
+            <input type="text" id="vehicle" placeholder="e.g. 2021 Toyota Highlander" required />
+          </div>
+          <div class="form-group">
+            <label for="vtype">Vehicle Type</label>
+            <select id="vtype" required>
+              <option value="" disabled selected>Select…</option>
+              <option>Sedan / Coupe</option>
+              <option>SUV / Crossover</option>
+              <option>Minivan</option>
+              <option>Truck</option>
+              <option>Van / Large Vehicle</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="service">Service You're Interested In</label>
+            <select id="service" required>
+              <option value="" disabled selected>Select…</option>
+              <option>Express Detail – $90</option>
+              <option>Interior or Exterior Only – $150</option>
+              <option>Full Detail – $250</option>
+              <option>SUV / Minivan Special – from $300</option>
+              <option>Paint Correction & Sealant – $400</option>
+              <option>3-Year Ceramic Coating – $600</option>
+              <option>Not sure — just want a quote</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="location">Your City / ZIP (where we'd come to you)</label>
+            <input type="text" id="location" placeholder="Crestwood, 40014" required />
+          </div>
+
+          <!-- PHOTO UPLOAD -->
+          <div class="form-group">
+            <label>Upload Photos <span style="color:var(--muted);text-transform:none;letter-spacing:0">(optional but helps us give an accurate quote)</span></label>
+            <div class="photo-upload-area" id="uploadArea">
+              <input type="file" id="photoInput" accept="image/*" multiple />
+              <div class="upload-icon">📷</div>
+              <div class="upload-label">
+                <strong>Tap to add photos</strong> or drag &amp; drop<br />
+                <span style="font-size:0.75rem;">Interior, exterior, any problem areas — up to 8 photos</span>
+              </div>
+            </div>
+            <div class="photo-previews" id="photoPreviews"></div>
+            <div class="photo-count" id="photoCount"></div>
+          </div>
+
+          <div class="form-group">
+            <label for="notes">Anything else? (pet hair, heavy stains, preferred dates, etc.)</label>
+            <textarea id="notes" placeholder="Let us know anything that'll help us give you the best quote…"></textarea>
+          </div>
+
+          <button type="submit" class="btn-primary form-submit">Send Quote Request</button>
+        </form>
+
+        <div class="form-success" id="formSuccess">
+          <span class="check">✔</span>
+          <p><strong style="color:var(--white)">Quote request received!</strong><br /><br />
+          We'll text or call you back within a few hours with your exact price. Feel free to reach us directly at <strong style="color:var(--white)">(502) 665-9349</strong> if you'd prefer to chat now.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-brand">
+      <div class="f-name">Heick &amp; Co. Detailing</div>
+      <p>Mobile Auto Detailing · Crestwood &amp; Louisville, KY</p>
+    </div>
+    <div class="footer-contact">
+      <a href="tel:5026659349">(502) 665-9349</a>
+      <a href="mailto:heick.co@gmail.com">heick.co@gmail.com</a>
+      <a href="https://instagram.com/heick.codetailing" target="_blank">@heick.codetailing</a>
+    </div>
+  </footer>
+  <div class="footer-bottom">© 2025 Heick &amp; Co. Detailing · All rights reserved</div>
+
+  <script>
+    // Scroll reveal
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.1 });
+    reveals.forEach(el => observer.observe(el));
+
+    // Smooth scroll
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        const target = document.querySelector(a.getAttribute('href'));
+        if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth' }); }
+      });
+    });
+
+    // Photo upload preview
+    const photoInput = document.getElementById('photoInput');
+    const previews = document.getElementById('photoPreviews');
+    const countEl = document.getElementById('photoCount');
+    const uploadArea = document.getElementById('uploadArea');
+    let selectedFiles = [];
+
+    photoInput.addEventListener('change', function() {
+      const newFiles = Array.from(this.files).slice(0, 8 - selectedFiles.length);
+      selectedFiles = [...selectedFiles, ...newFiles].slice(0, 8);
+      renderPreviews();
+    });
+
+    // Drag and drop
+    uploadArea.addEventListener('dragover', e => { e.preventDefault(); uploadArea.classList.add('dragover'); });
+    uploadArea.addEventListener('dragleave', () => uploadArea.classList.remove('dragover'));
+    uploadArea.addEventListener('drop', e => {
+      e.preventDefault();
+      uploadArea.classList.remove('dragover');
+      const dropped = Array.from(e.dataTransfer.files).filter(f => f.type.startsWith('image/'));
+      selectedFiles = [...selectedFiles, ...dropped].slice(0, 8);
+      renderPreviews();
+    });
+
+    function renderPreviews() {
+      previews.innerHTML = '';
+      selectedFiles.forEach(file => {
+        const img = document.createElement('img');
+        img.className = 'photo-preview';
+        img.src = URL.createObjectURL(file);
+        previews.appendChild(img);
+      });
+      countEl.textContent = selectedFiles.length > 0 ? `${selectedFiles.length} photo${selectedFiles.length > 1 ? 's' : ''} selected` : '';
+    }
+
+    // Form submit
+    document.getElementById('quoteForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      this.style.display = 'none';
+      document.getElementById('formSuccess').classList.add('show');
+      window.scrollTo({ top: document.getElementById('quote').offsetTop - 80, behavior: 'smooth' });
+    });
+  </script>
+</body>
+</html>
