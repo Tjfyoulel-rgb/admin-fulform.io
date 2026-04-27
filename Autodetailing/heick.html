@@ -101,11 +101,17 @@
     /* ── HERO ── */
     .hero {
       min-height: 100vh;
-      display: flex;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
       align-items: center;
-      padding: 8rem 2.5rem 4rem;
+      padding: 8rem 0 4rem;
       position: relative;
       overflow: hidden;
+    }
+
+    @media (max-width: 800px) {
+      .hero { grid-template-columns: 1fr; padding: 8rem 1.5rem 4rem; }
+      .hero-visual { display: none; }
     }
 
     .hero-bg {
@@ -135,8 +141,82 @@
 
     .hero-content {
       position: relative;
-      max-width: 680px;
+      padding: 0 2.5rem;
       animation: fadeUp 0.9s ease both;
+    }
+
+    .hero-visual {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .hero-visual-inner {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 80% 80% at 60% 50%, rgba(42,111,186,0.18) 0%, transparent 70%);
+    }
+
+    .hero-rings {
+      position: relative;
+      width: 420px;
+      height: 420px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hero-ring {
+      position: absolute;
+      border-radius: 50%;
+      border: 1px solid rgba(42,111,186,0.2);
+      animation: pulseRing 4s ease-in-out infinite;
+    }
+
+    .hero-ring:nth-child(1) { width: 160px; height: 160px; border-color: rgba(74,143,212,0.5); animation-delay: 0s; }
+    .hero-ring:nth-child(2) { width: 260px; height: 260px; animation-delay: 0.5s; }
+    .hero-ring:nth-child(3) { width: 360px; height: 360px; animation-delay: 1s; }
+    .hero-ring:nth-child(4) { width: 460px; height: 460px; animation-delay: 1.5s; }
+    .hero-ring:nth-child(5) { width: 560px; height: 560px; animation-delay: 2s; }
+
+    .hero-ring-center {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(42,111,186,0.3) 0%, rgba(42,111,186,0.05) 100%);
+      border: 1px solid rgba(74,143,212,0.6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.5rem;
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-visual-label {
+      position: absolute;
+      bottom: 12%;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 0.68rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(74,143,212,0.45);
+      white-space: nowrap;
+    }
+
+    @keyframes pulseRing {
+      0%, 100% { opacity: 0.4; transform: scale(1); }
+      50% { opacity: 0.8; transform: scale(1.03); }
+    }
+
+    @media (max-width: 800px) {
+      .hero { grid-template-columns: 1fr !important; padding: 8rem 1.5rem 4rem !important; }
+      .hero-visual { display: none; }
+      .hero-content { padding: 0; }
     }
 
     .hero-eyebrow {
@@ -686,6 +766,18 @@
         <a href="#pricing" class="btn-outline">View Pricing</a>
       </div>
     </div>
+    <div class="hero-visual">
+      <div class="hero-visual-inner"></div>
+      <div class="hero-rings">
+        <div class="hero-ring"></div>
+        <div class="hero-ring"></div>
+        <div class="hero-ring"></div>
+        <div class="hero-ring"></div>
+        <div class="hero-ring"></div>
+        <div class="hero-ring-center">🚗</div>
+      </div>
+      <div class="hero-visual-label">Mobile · Professional · Louisville</div>
+    </div>
   </section>
 
   <!-- TRUST BAR -->
@@ -709,7 +801,7 @@
         <p>Full interior & exterior detail for larger vehicles.<br />Includes everything in our Full Detail package.</p>
       </div>
       <div class="special-price">
-        From $300
+        From $150*
         <span>Starting price · exact quote based on condition</span>
       </div>
     </div>
