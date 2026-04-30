@@ -1,0 +1,953 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>fulform.io — Digital Strategy & Automation</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #0a0a0b;
+    --bg2: #111114;
+    --bg3: #16161a;
+    --border: rgba(255,255,255,0.07);
+    --border-bright: rgba(255,255,255,0.14);
+    --accent: #00e5b0;
+    --accent2: #7B6EF6;
+    --text: #f0ede8;
+    --muted: #8a8a96;
+    --muted2: #5a5a66;
+    --card-bg: #13131a;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.25rem 3rem;
+    border-bottom: 1px solid var(--border);
+    background: rgba(10,10,11,0.85);
+    backdrop-filter: blur(16px);
+  }
+
+  .nav-logo {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 1.2rem;
+    letter-spacing: -0.03em;
+    color: var(--text);
+    text-decoration: none;
+  }
+
+  .nav-logo span { color: var(--accent); }
+
+  .nav-links {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.78rem;
+    font-weight: 400;
+    color: var(--muted);
+    text-decoration: none;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--text); }
+
+  .nav-cta {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.78rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--accent);
+    border: 1px solid rgba(0,229,176,0.35);
+    padding: 0.5rem 1.25rem;
+    border-radius: 3px;
+    text-decoration: none;
+    transition: background 0.2s, color 0.2s;
+  }
+
+  .nav-cta:hover {
+    background: rgba(0,229,176,0.1);
+  }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 8rem 3rem 5rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-grid-bg {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+    background-size: 60px 60px;
+    mask-image: radial-gradient(ellipse 80% 80% at 50% 20%, black 30%, transparent 100%);
+  }
+
+  .hero-glow {
+    position: absolute;
+    top: -10%;
+    right: -5%;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(123,110,246,0.12) 0%, transparent 65%);
+    pointer-events: none;
+  }
+
+  .hero-glow2 {
+    position: absolute;
+    bottom: 0;
+    left: -10%;
+    width: 500px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(0,229,176,0.06) 0%, transparent 65%);
+    pointer-events: none;
+  }
+
+  .hero-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.75rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .hero-tag::before {
+    content: '';
+    display: inline-block;
+    width: 24px;
+    height: 1px;
+    background: var(--accent);
+  }
+
+  .hero h1 {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: clamp(3.2rem, 7vw, 6.5rem);
+    line-height: 0.95;
+    letter-spacing: -0.04em;
+    margin-bottom: 2rem;
+  }
+
+  .hero h1 em {
+    font-style: normal;
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(255,255,255,0.25);
+  }
+
+  .hero h1 .accent-word {
+    color: var(--accent);
+    display: block;
+  }
+
+  .hero-sub {
+    font-size: 1.15rem;
+    font-weight: 300;
+    color: var(--muted);
+    max-width: 520px;
+    line-height: 1.75;
+    margin-bottom: 3rem;
+  }
+
+  .hero-sub strong {
+    color: var(--text);
+    font-weight: 400;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 500;
+    background: var(--accent);
+    color: #050f0c;
+    padding: 0.85rem 2rem;
+    border-radius: 3px;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: opacity 0.2s, transform 0.15s;
+  }
+
+  .btn-primary:hover { opacity: 0.88; transform: translateY(-1px); }
+
+  .btn-outline {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 400;
+    color: var(--text);
+    border: 1px solid var(--border-bright);
+    padding: 0.85rem 2rem;
+    border-radius: 3px;
+    text-decoration: none;
+    transition: border-color 0.2s, background 0.2s;
+  }
+
+  .btn-outline:hover {
+    border-color: rgba(255,255,255,0.3);
+    background: rgba(255,255,255,0.03);
+  }
+
+  .hero-stats {
+    display: flex;
+    gap: 3rem;
+    margin-top: 5rem;
+    padding-top: 3rem;
+    border-top: 1px solid var(--border);
+  }
+
+  .stat-num {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 2rem;
+    color: var(--text);
+    letter-spacing: -0.03em;
+  }
+
+  .stat-num span { color: var(--accent); }
+
+  .stat-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-top: 0.2rem;
+  }
+
+  /* SECTION BASE */
+  section { padding: 7rem 3rem; }
+  .section-inner { max-width: 1200px; margin: 0 auto; }
+
+  .section-eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .section-eyebrow::after {
+    content: '';
+    flex: 1;
+    max-width: 40px;
+    height: 1px;
+    background: var(--accent);
+    opacity: 0.5;
+  }
+
+  .section-title {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: clamp(2rem, 4vw, 3rem);
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+    margin-bottom: 1.25rem;
+  }
+
+  .section-desc {
+    font-size: 1rem;
+    color: var(--muted);
+    max-width: 540px;
+    line-height: 1.8;
+    font-weight: 300;
+  }
+
+  /* SKILLS */
+  #skills { background: var(--bg2); }
+
+  .skills-header {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: end;
+    margin-bottom: 4rem;
+  }
+
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+
+  .skill-card {
+    background: var(--bg2);
+    padding: 2rem 1.75rem;
+    transition: background 0.2s;
+  }
+
+  .skill-card:hover { background: var(--bg3); }
+
+  .skill-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    margin-bottom: 1.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .skill-icon svg { width: 20px; height: 20px; }
+
+  .skill-card h3 {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.05rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-bottom: 0.6rem;
+  }
+
+  .skill-card p {
+    font-size: 0.88rem;
+    color: var(--muted);
+    line-height: 1.75;
+    font-weight: 300;
+  }
+
+  .skill-tags {
+    margin-top: 1.25rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+
+  .tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.05em;
+    color: var(--muted2);
+    border: 1px solid var(--border);
+    padding: 0.25rem 0.6rem;
+    border-radius: 2px;
+    text-transform: uppercase;
+  }
+
+  /* WORK */
+  #work { background: var(--bg); }
+
+  .work-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin-bottom: 3.5rem;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+  }
+
+  .work-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+
+  .work-card {
+    background: var(--card-bg);
+    padding: 2.5rem;
+    text-decoration: none;
+    display: block;
+    position: relative;
+    transition: background 0.2s;
+    overflow: hidden;
+  }
+
+  .work-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--accent), transparent);
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  .work-card:hover { background: var(--bg3); }
+  .work-card:hover::before { opacity: 1; }
+
+  .work-card-type {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1rem;
+  }
+
+  .work-card h3 {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 1.35rem;
+    letter-spacing: -0.025em;
+    color: var(--text);
+    margin-bottom: 0.75rem;
+  }
+
+  .work-card p {
+    font-size: 0.9rem;
+    color: var(--muted);
+    line-height: 1.7;
+    font-weight: 300;
+    margin-bottom: 1.5rem;
+  }
+
+  .work-card-link {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.75rem;
+    letter-spacing: 0.06em;
+    color: var(--muted2);
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    transition: color 0.2s;
+  }
+
+  .work-card:hover .work-card-link { color: var(--accent); }
+
+  .work-badge {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 0.3rem 0.65rem;
+    border-radius: 2px;
+    border: 1px solid;
+  }
+
+  .badge-live {
+    color: #00e5b0;
+    border-color: rgba(0,229,176,0.3);
+    background: rgba(0,229,176,0.07);
+  }
+
+  .badge-wip {
+    color: #7B6EF6;
+    border-color: rgba(123,110,246,0.3);
+    background: rgba(123,110,246,0.07);
+  }
+
+  /* PROCESS */
+  #process { background: var(--bg2); }
+
+  .process-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    margin-top: 4rem;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    overflow: hidden;
+    background: var(--border);
+  }
+
+  .process-step {
+    background: var(--bg2);
+    padding: 2.5rem 1.75rem;
+    position: relative;
+  }
+
+  .step-num {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--muted2);
+    letter-spacing: 0.1em;
+    margin-bottom: 1.5rem;
+  }
+
+  .step-title {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 1.05rem;
+    letter-spacing: -0.02em;
+    margin-bottom: 0.75rem;
+  }
+
+  .step-desc {
+    font-size: 0.85rem;
+    color: var(--muted);
+    line-height: 1.7;
+    font-weight: 300;
+  }
+
+  /* CTA SECTION */
+  #contact {
+    background: var(--bg);
+    border-top: 1px solid var(--border);
+  }
+
+  .cta-box {
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 5rem 4rem;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 3rem;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    background: var(--card-bg);
+  }
+
+  .cta-box::after {
+    content: '';
+    position: absolute;
+    bottom: -80px;
+    right: -80px;
+    width: 280px;
+    height: 280px;
+    background: radial-gradient(circle, rgba(0,229,176,0.06) 0%, transparent 65%);
+  }
+
+  .cta-box h2 {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    letter-spacing: -0.04em;
+    line-height: 1.05;
+    margin-bottom: 1rem;
+  }
+
+  .cta-box p {
+    font-size: 1rem;
+    color: var(--muted);
+    font-weight: 300;
+    line-height: 1.75;
+    max-width: 480px;
+  }
+
+  .cta-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: flex-start;
+    position: relative;
+    z-index: 1;
+    min-width: 200px;
+  }
+
+  /* FOOTER */
+  footer {
+    padding: 2.5rem 3rem;
+    border-top: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .footer-logo {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 1rem;
+    color: var(--text);
+  }
+
+  .footer-logo span { color: var(--accent); }
+
+  .footer-copy {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--muted2);
+    letter-spacing: 0.06em;
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+  }
+
+  .footer-links a {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--muted2);
+    text-decoration: none;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+
+  .footer-links a:hover { color: var(--text); }
+
+  /* Animate in */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero-tag { animation: fadeUp 0.5s ease forwards; }
+  .hero h1 { animation: fadeUp 0.55s 0.08s ease both; }
+  .hero-sub { animation: fadeUp 0.55s 0.16s ease both; }
+  .hero-actions { animation: fadeUp 0.55s 0.24s ease both; }
+  .hero-stats { animation: fadeUp 0.55s 0.32s ease both; }
+
+  /* Arrow icon */
+  .arrow {
+    display: inline-block;
+    transition: transform 0.2s;
+  }
+
+  a:hover .arrow { transform: translateX(3px); }
+
+  @media (max-width: 900px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { display: none; }
+    section { padding: 5rem 1.5rem; }
+    .hero { padding: 7rem 1.5rem 4rem; }
+    .skills-header, .work-header { grid-template-columns: 1fr; gap: 1.5rem; }
+    .skills-grid { grid-template-columns: 1fr; }
+    .work-grid { grid-template-columns: 1fr; }
+    .process-grid { grid-template-columns: 1fr 1fr; }
+    .cta-box { grid-template-columns: 1fr; padding: 3rem 2rem; }
+    footer { flex-direction: column; gap: 1.5rem; text-align: center; }
+    .hero-stats { gap: 2rem; flex-wrap: wrap; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">fulform<span>.io</span></a>
+  <ul class="nav-links">
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#work">Work</a></li>
+    <li><a href="#process">Process</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">Let's Talk</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-grid-bg"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-glow2"></div>
+  <div class="hero-inner">
+    <p class="hero-tag">Digital strategy &amp; automation</p>
+    <h1>
+      Build <em>smarter</em>.<br>
+      Move <em>faster</em>.<br>
+      <span class="accent-word">Ship better.</span>
+    </h1>
+    <p class="hero-sub">
+      I help businesses operate at full form — combining <strong>web development</strong> and <strong>Microsoft Power Platform</strong> to close the gap between your vision and what your systems actually do.
+    </p>
+    <div class="hero-actions">
+      <a href="#work" class="btn-primary">See My Work <span class="arrow">→</span></a>
+      <a href="#contact" class="btn-outline">Start a Project</a>
+    </div>
+    <div class="hero-stats">
+      <div>
+        <div class="stat-num">10<span>+</span></div>
+        <div class="stat-label">Sites Delivered</div>
+      </div>
+      <div>
+        <div class="stat-num">Power<span>.</span></div>
+        <div class="stat-label">Platform Certified</div>
+      </div>
+      <div>
+        <div class="stat-num">0<span>%</span></div>
+        <div class="stat-label">Fluff</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-inner">
+    <div class="skills-header">
+      <div>
+        <p class="section-eyebrow">What I bring</p>
+        <h2 class="section-title">Skills that move the needle</h2>
+      </div>
+      <p class="section-desc">Not just code — solutions that map to your business outcomes. I work across the stack and across the org chart.</p>
+    </div>
+
+    <div class="skills-grid">
+
+      <div class="skill-card">
+        <div class="skill-icon" style="background: rgba(0,229,176,0.1);">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#00e5b0" stroke-width="1.5">
+            <polyline points="16 18 22 12 16 6"/>
+            <polyline points="8 6 2 12 8 18"/>
+          </svg>
+        </div>
+        <h3>Web Development</h3>
+        <p>Clean, fast, conversion-focused websites. From landing pages to full business platforms — built to perform and easy to manage.</p>
+        <div class="skill-tags">
+          <span class="tag">HTML/CSS</span>
+          <span class="tag">JavaScript</span>
+          <span class="tag">Responsive</span>
+          <span class="tag">CMS</span>
+        </div>
+      </div>
+
+      <div class="skill-card">
+        <div class="skill-icon" style="background: rgba(123,110,246,0.1);">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#7B6EF6" stroke-width="1.5">
+            <rect x="3" y="3" width="7" height="7"/>
+            <rect x="14" y="3" width="7" height="7"/>
+            <rect x="14" y="14" width="7" height="7"/>
+            <rect x="3" y="14" width="7" height="7"/>
+          </svg>
+        </div>
+        <h3>Power Apps</h3>
+        <p>Custom low-code applications that replace spreadsheets and manual processes — deployed inside your Microsoft 365 environment.</p>
+        <div class="skill-tags">
+          <span class="tag">Canvas Apps</span>
+          <span class="tag">Model-Driven</span>
+          <span class="tag">Dataverse</span>
+        </div>
+      </div>
+
+      <div class="skill-card">
+        <div class="skill-icon" style="background: rgba(0,229,176,0.1);">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#00e5b0" stroke-width="1.5">
+            <circle cx="12" cy="12" r="3"/>
+            <path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/>
+          </svg>
+        </div>
+        <h3>Power Automate</h3>
+        <p>Workflows that run while you sleep. Automate approvals, notifications, data syncs, and repetitive tasks across your entire stack.</p>
+        <div class="skill-tags">
+          <span class="tag">Cloud Flows</span>
+          <span class="tag">Connectors</span>
+          <span class="tag">SharePoint</span>
+        </div>
+      </div>
+
+      <div class="skill-card">
+        <div class="skill-icon" style="background: rgba(123,110,246,0.1);">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#7B6EF6" stroke-width="1.5">
+            <line x1="18" y1="20" x2="18" y2="10"/>
+            <line x1="12" y1="20" x2="12" y2="4"/>
+            <line x1="6" y1="20" x2="6" y2="14"/>
+          </svg>
+        </div>
+        <h3>Power BI</h3>
+        <p>Turn your business data into dashboards that actually tell a story. Real-time insights connected to the sources you already use.</p>
+        <div class="skill-tags">
+          <span class="tag">Dashboards</span>
+          <span class="tag">DAX</span>
+          <span class="tag">Data Modeling</span>
+        </div>
+      </div>
+
+      <div class="skill-card">
+        <div class="skill-icon" style="background: rgba(0,229,176,0.1);">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#00e5b0" stroke-width="1.5">
+            <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+            <path d="M2 17l10 5 10-5"/>
+            <path d="M2 12l10 5 10-5"/>
+          </svg>
+        </div>
+        <h3>System Integration</h3>
+        <p>Connecting your tools so they work together — CRM, ERP, SharePoint, custom APIs. No more copy-pasting between systems.</p>
+        <div class="skill-tags">
+          <span class="tag">APIs</span>
+          <span class="tag">SharePoint</span>
+          <span class="tag">M365</span>
+        </div>
+      </div>
+
+      <div class="skill-card">
+        <div class="skill-icon" style="background: rgba(123,110,246,0.1);">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#7B6EF6" stroke-width="1.5">
+            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+            <circle cx="9" cy="7" r="4"/>
+            <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+            <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+          </svg>
+        </div>
+        <h3>Consultation</h3>
+        <p>Not sure where to start? I'll map your processes, identify the highest-value automation opportunities, and give you a clear roadmap.</p>
+        <div class="skill-tags">
+          <span class="tag">Discovery</span>
+          <span class="tag">Roadmap</span>
+          <span class="tag">Strategy</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- WORK -->
+<section id="work">
+  <div class="section-inner">
+    <div class="work-header">
+      <div>
+        <p class="section-eyebrow">Portfolio</p>
+        <h2 class="section-title">Things I've built</h2>
+      </div>
+      <p style="font-size: 0.88rem; color: var(--muted); font-family: 'DM Mono', monospace; letter-spacing: 0.04em;">More work available on request</p>
+    </div>
+
+    <div class="work-grid">
+
+      <a href="#" class="work-card">
+        <span class="work-badge badge-live">Live</span>
+        <p class="work-card-type">Web Design &amp; Dev</p>
+        <h3>Business Website — [Client Name]</h3>
+        <p>A conversion-focused site for a local business. Custom design, mobile-first build, integrated contact forms and Google Analytics.</p>
+        <span class="work-card-link">View Project <span class="arrow">→</span></span>
+      </a>
+
+      <a href="#" class="work-card">
+        <span class="work-badge badge-live">Live</span>
+        <p class="work-card-type">Web Design &amp; Dev</p>
+        <h3>Portfolio / Branding Site</h3>
+        <p>Clean, minimal portfolio site for a creative professional. Fast, lightweight, and easy to keep updated without touching code.</p>
+        <span class="work-card-link">View Project <span class="arrow">→</span></span>
+      </a>
+
+      <a href="#" class="work-card">
+        <span class="work-badge badge-wip">In Progress</span>
+        <p class="work-card-type">Power Platform</p>
+        <h3>Leave Request Automation</h3>
+        <p>A full Power Apps + Automate solution replacing a paper-based HR process. Manager approvals, email notifications, and SharePoint logging.</p>
+        <span class="work-card-link">Case Study Coming <span class="arrow">→</span></span>
+      </a>
+
+      <a href="#" class="work-card">
+        <span class="work-badge badge-wip">In Progress</span>
+        <p class="work-card-type">Power BI</p>
+        <h3>Operations Dashboard</h3>
+        <p>Real-time reporting dashboard connecting multiple data sources into one view. Built for non-technical stakeholders who need clarity fast.</p>
+        <span class="work-card-link">Preview Available <span class="arrow">→</span></span>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section id="process">
+  <div class="section-inner">
+    <p class="section-eyebrow">How it works</p>
+    <h2 class="section-title">From problem to shipped</h2>
+
+    <div class="process-grid">
+      <div class="process-step">
+        <p class="step-num">01 / DISCOVER</p>
+        <p class="step-title">Understand the problem</p>
+        <p class="step-desc">We map out your current processes, pain points, and goals. No assumptions — just honest questions and careful listening.</p>
+      </div>
+      <div class="process-step">
+        <p class="step-num">02 / DESIGN</p>
+        <p class="step-title">Build the right solution</p>
+        <p class="step-desc">Whether it's a website or a workflow, I design solutions that fit your actual environment — not a generic template.</p>
+      </div>
+      <div class="process-step">
+        <p class="step-num">03 / BUILD</p>
+        <p class="step-title">Develop &amp; iterate</p>
+        <p class="step-desc">Clean code, clear communication. You're involved throughout so there are no surprises at the end.</p>
+      </div>
+      <div class="process-step">
+        <p class="step-num">04 / HAND OFF</p>
+        <p class="step-title">Launch &amp; support</p>
+        <p class="step-desc">Full handover with documentation. I don't disappear after delivery — I'm available for questions, updates, and what comes next.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT / CTA -->
+<section id="contact">
+  <div class="section-inner">
+    <div class="cta-box">
+      <div>
+        <p class="section-eyebrow">Let's talk</p>
+        <h2>Ready to operate<br>at full form?</h2>
+        <p>Whether you need a new website, a smarter internal tool, or you just want to explore what's possible — reach out. First conversation is always free.</p>
+      </div>
+      <div class="cta-actions">
+        <a href="mailto:hello@fulform.io" class="btn-primary" style="width: 100%; justify-content: center;">
+          Email Me <span class="arrow">→</span>
+        </a>
+        <a href="https://linkedin.com" class="btn-outline" style="width: 100%; text-align: center;">
+          LinkedIn
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span class="footer-logo">fulform<span>.io</span></span>
+  <ul class="footer-links">
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#work">Work</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <span class="footer-copy">&copy; 2025 fulform.io</span>
+</footer>
+
+</body>
+</html>
