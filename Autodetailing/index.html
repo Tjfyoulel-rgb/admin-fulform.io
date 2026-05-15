@@ -392,6 +392,139 @@
       font-style: italic;
     }
 
+    /* ── PRICING CARDS ── */
+    .pricing-category-label {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      letter-spacing: 0.06em;
+      color: var(--white);
+      margin-bottom: 1.4rem;
+      padding-bottom: 0.6rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .pricing-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      margin-bottom: 0.5rem;
+    }
+
+    @media (max-width: 860px) { .pricing-cards { grid-template-columns: 1fr; } }
+
+    .pricing-card {
+      background: var(--card);
+      padding: 2rem 1.6rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+      position: relative;
+    }
+
+    .pc-featured {
+      background: #15191f;
+    }
+
+    .pc-heavy {
+      background: #16161a;
+    }
+
+    .pc-badge {
+      position: absolute;
+      top: 0;
+      right: 0;
+      background: var(--blue);
+      color: var(--white);
+      font-size: 0.65rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 0.3rem 0.8rem;
+      font-weight: 500;
+    }
+
+    .pc-header { display: flex; flex-direction: column; gap: 0.25rem; }
+
+    .pc-name {
+      font-family: var(--font-display);
+      font-size: 1.35rem;
+      letter-spacing: 0.04em;
+      line-height: 1.1;
+    }
+
+    .pc-tag {
+      font-size: 0.72rem;
+      color: var(--muted);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .pc-includes {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.45rem;
+      flex: 1;
+    }
+
+    .pc-includes li {
+      font-size: 0.83rem;
+      color: var(--muted);
+      display: flex;
+      align-items: center;
+      gap: 0.55rem;
+    }
+
+    .pc-includes li::before {
+      content: '';
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--blue);
+      flex-shrink: 0;
+    }
+
+    .pc-sizes {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+      border-top: 1px solid var(--border);
+      padding-top: 1rem;
+    }
+
+    .pc-size-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.82rem;
+      color: var(--muted);
+    }
+
+    .pc-price {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      letter-spacing: 0.04em;
+      color: var(--blue-light);
+    }
+
+    .pc-starting {
+      font-size: 0.78rem;
+      color: var(--muted);
+      border-top: 1px solid var(--border);
+      padding-top: 0.8rem;
+      letter-spacing: 0.04em;
+    }
+
+    .pc-starting strong {
+      color: var(--white);
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      letter-spacing: 0.04em;
+    }
+
+    .addons-table { margin-top: 0.5rem; }
+
     /* ── SERVICES DETAIL ── */
     .services-cols {
       display: grid;
@@ -700,58 +833,185 @@
   <section id="pricing">
     <div class="section-label">Transparent Pricing</div>
     <h2>What's It Cost?</h2>
-    <p class="section-intro">Pricing varies by vehicle size and condition. Upload photos when you request a quote and we'll give you an exact number — no surprises.</p>
+    <p class="section-intro">All prices are <em>starting rates</em> — final cost depends on vehicle size and condition. Send photos for an exact quote with no surprises.</p>
 
-    <!-- CAR BREAK-IN SPECIAL -->
-    <div class="special-banner reveal">
-      <div class="special-left">
-        <h3>🚐 SUV / Minivan Special</h3>
-        <p>Full interior & exterior detail for larger vehicles.<br />Includes everything in our Full Detail package.</p>
+    <!-- INTERIOR SERVICES -->
+    <div class="pricing-category-label reveal">Interior Services</div>
+
+    <div class="pricing-cards reveal">
+
+      <div class="pricing-card">
+        <div class="pc-header">
+          <div class="pc-name">Basic Interior Refresh</div>
+          <div class="pc-tag">Maintenance / Light Dirt</div>
+        </div>
+        <ul class="pc-includes">
+          <li>Full vacuum</li>
+          <li>Wipe down of surfaces</li>
+          <li>Interior glass cleaning</li>
+          <li>Light dust &amp; debris removal</li>
+        </ul>
+        <div class="pc-sizes">
+          <div class="pc-size-row"><span>Sedan / Coupe</span><span class="pc-price">$100</span></div>
+          <div class="pc-size-row"><span>Small SUV / Crossover</span><span class="pc-price">$120</span></div>
+          <div class="pc-size-row"><span>Large SUV / 3-Row / Truck</span><span class="pc-price">$140</span></div>
+        </div>
+        <div class="pc-starting">Starting at <strong>$100</strong></div>
       </div>
-      <div class="special-price">
-        From $300
-        <span>Starting price · exact quote based on condition</span>
+
+      <div class="pricing-card pc-featured">
+        <div class="pc-badge">Most Popular</div>
+        <div class="pc-header">
+          <div class="pc-name">Deep Interior Detail</div>
+          <div class="pc-tag">Moderate Dirt, Stains, Pet Hair</div>
+        </div>
+        <ul class="pc-includes">
+          <li>Full vacuum</li>
+          <li>Deep wipe down</li>
+          <li>Interior glass cleaning</li>
+          <li>Carpet shampoo &amp; extraction</li>
+          <li>Seat extraction (cloth)</li>
+          <li>Light stain treatment</li>
+        </ul>
+        <div class="pc-sizes">
+          <div class="pc-size-row"><span>Sedan / Coupe</span><span class="pc-price">$160</span></div>
+          <div class="pc-size-row"><span>Small SUV / Crossover</span><span class="pc-price">$190</span></div>
+          <div class="pc-size-row"><span>Large SUV / 3-Row / Truck</span><span class="pc-price">$220</span></div>
+        </div>
+        <div class="pc-starting">Starting at <strong>$160</strong></div>
       </div>
+
+      <div class="pricing-card pc-heavy">
+        <div class="pc-header">
+          <div class="pc-name">Heavy / Hazard Interior</div>
+          <div class="pc-tag">Broken Glass, Heavy Pet Hair, Mud &amp; Sand</div>
+        </div>
+        <ul class="pc-includes">
+          <li>Full vacuum</li>
+          <li>Deep wipe down</li>
+          <li>Interior glass cleaning</li>
+          <li>Carpet shampoo &amp; extraction</li>
+          <li>Seat extraction (cloth)</li>
+          <li>Heavy stain treatment</li>
+        </ul>
+        <div class="pc-sizes">
+          <div class="pc-size-row"><span>Sedan / Coupe</span><span class="pc-price">$200</span></div>
+          <div class="pc-size-row"><span>Small SUV / Crossover</span><span class="pc-price">$250</span></div>
+          <div class="pc-size-row"><span>Large SUV / 3-Row / Truck</span><span class="pc-price">$300</span></div>
+        </div>
+        <div class="pc-starting">Starting at <strong>$200</strong></div>
+      </div>
+
     </div>
 
-    <table class="pricing-table reveal">
+    <!-- EXTERIOR SERVICES -->
+    <div class="pricing-category-label reveal" style="margin-top:3.5rem;">Exterior Services</div>
+
+    <div class="pricing-cards reveal">
+
+      <div class="pricing-card">
+        <div class="pc-header">
+          <div class="pc-name">Basic Exterior Wash</div>
+          <div class="pc-tag">Maintenance Clean</div>
+        </div>
+        <ul class="pc-includes">
+          <li>Foam bath</li>
+          <li>Hand wash</li>
+          <li>Wheels cleaned</li>
+          <li>Tire shine</li>
+          <li>Drying aid</li>
+        </ul>
+        <div class="pc-sizes">
+          <div class="pc-size-row"><span>Sedan</span><span class="pc-price">$50</span></div>
+          <div class="pc-size-row"><span>SUV / Truck</span><span class="pc-price">$60–70</span></div>
+        </div>
+        <div class="pc-starting">Starting at <strong>$50</strong></div>
+      </div>
+
+      <div class="pricing-card">
+        <div class="pc-header">
+          <div class="pc-name">Decontamination + Protection</div>
+          <div class="pc-tag">Deep Wash with Sealant</div>
+        </div>
+        <ul class="pc-includes">
+          <li>Deep wash</li>
+          <li>Clay bar treatment</li>
+          <li>Spray sealant / protection</li>
+          <li>Wheels + tires detailed</li>
+        </ul>
+        <div class="pc-sizes">
+          <div class="pc-size-row"><span>Sedan</span><span class="pc-price">$120</span></div>
+          <div class="pc-size-row"><span>SUV / Truck</span><span class="pc-price">$140–170</span></div>
+        </div>
+        <div class="pc-starting">Starting at <strong>$120</strong></div>
+      </div>
+
+      <div class="pricing-card pc-featured">
+        <div class="pc-badge">Best Value</div>
+        <div class="pc-header">
+          <div class="pc-name">Full Interior + Exterior</div>
+          <div class="pc-tag">Complete Detail Package</div>
+        </div>
+        <ul class="pc-includes">
+          <li>Deep interior detail</li>
+          <li>Full exterior wash</li>
+          <li>Protection / sealant</li>
+          <li>Tire shine</li>
+          <li>Interior glass</li>
+          <li>Door jambs</li>
+        </ul>
+        <div class="pc-sizes">
+          <div class="pc-size-row"><span>Sedan</span><span class="pc-price">$220</span></div>
+          <div class="pc-size-row"><span>Small SUV</span><span class="pc-price">$250</span></div>
+          <div class="pc-size-row"><span>Large SUV / Truck / 3-Row</span><span class="pc-price">$280–320</span></div>
+        </div>
+        <div class="pc-starting">Starting at <strong>$220</strong></div>
+      </div>
+
+    </div>
+
+    <!-- ADD-ONS -->
+    <div class="pricing-category-label reveal" style="margin-top:3.5rem;">Add-Ons</div>
+    <table class="pricing-table addons-table reveal">
       <tr>
-        <td class="service-name-td">
-          Express Detail
-          <span class="service-note">Quick refresh — wash, vacuum, windows, tire dress</span>
-        </td>
-        <td class="price-td">$90</td>
+        <td class="service-name-td">Pet Hair Removal — Light<span class="service-note">Manageable amounts throughout the vehicle</span></td>
+        <td class="price-td">+$50</td>
       </tr>
       <tr>
-        <td class="service-name-td">
-          Interior or Exterior Only
-          <span class="service-note">Deep clean on one area of the vehicle</span>
-        </td>
-        <td class="price-td">$150</td>
+        <td class="service-name-td">Pet Hair Removal — Heavy<span class="service-note">Embedded or excessive pet hair</span></td>
+        <td class="price-td">+$100</td>
       </tr>
       <tr>
-        <td class="service-name-td">
-          Full Detail
-          <span class="service-note">Complete interior + exterior — our most popular service</span>
-        </td>
-        <td class="price-td">$250</td>
+        <td class="service-name-td">Odor Treatment<span class="service-note">Neutralize smoke, pet, food, and other odors</span></td>
+        <td class="price-td">+$25</td>
       </tr>
       <tr>
-        <td class="service-name-td">
-          Paint Correction &amp; Sealant
-          <span class="service-note">Machine polish removes swirls, scratches &amp; oxidation</span>
-        </td>
-        <td class="price-td">$400</td>
+        <td class="service-name-td">Seat Extraction — Front Only<span class="service-note">Shampoo &amp; extract front seats</span></td>
+        <td class="price-td">+$40</td>
       </tr>
       <tr>
-        <td class="service-name-td">
-          3-Year Ceramic Coating
-          <span class="service-note">Long-term protection with full decontamination prep</span>
-        </td>
-        <td class="price-td">$600</td>
+        <td class="service-name-td">Seat Extraction — Full Vehicle<span class="service-note">Shampoo &amp; extract all seats</span></td>
+        <td class="price-td">+$80</td>
+      </tr>
+      <tr>
+        <td class="service-name-td">Carpet Extraction Only<span class="service-note">Deep shampoo &amp; extraction of all carpeted areas</span></td>
+        <td class="price-td">+$50–80</td>
+      </tr>
+      <tr>
+        <td class="service-name-td">Engine Bay Detail<span class="service-note">Degrease &amp; clean the engine compartment</span></td>
+        <td class="price-td">+$40</td>
+      </tr>
+      <tr>
+        <td class="service-name-td">Headlight Restoration<span class="service-note">Remove yellowing &amp; haze, restore clarity</span></td>
+        <td class="price-td">+$60</td>
+      </tr>
+      <tr>
+        <td class="service-name-td">Spray Wax / Sealant Upgrade<span class="service-note">Added protection layer on exterior surfaces</span></td>
+        <td class="price-td">+$25</td>
       </tr>
     </table>
-    <p class="pricing-note">* All prices are starting rates for standard-size vehicles in average condition. Larger vehicles, heavy soiling, or pet hair may affect final pricing. Submit photos for an exact quote.</p>
+
+    <p class="pricing-note">* All prices are starting rates. Final pricing is based on vehicle size and condition — no flat rates. Send photos for an exact quote.</p>
   </section>
 
   <!-- SERVICES DETAIL -->
@@ -856,12 +1116,12 @@
             <label for="service">Service You're Interested In</label>
             <select id="service" required>
               <option value="" disabled selected>Select…</option>
-              <option>Express Detail – $90</option>
-              <option>Interior or Exterior Only – $150</option>
-              <option>Full Detail – $250</option>
-              <option>SUV / Minivan Special – from $300</option>
-              <option>Paint Correction & Sealant – $400</option>
-              <option>3-Year Ceramic Coating – $600</option>
+              <option>Basic Interior Refresh – from $100</option>
+              <option>Deep Interior Detail – from $160</option>
+              <option>Heavy / Hazard Interior – from $200</option>
+              <option>Basic Exterior Wash – from $50</option>
+              <option>Exterior Decontamination + Protection – from $120</option>
+              <option>Full Interior + Exterior Detail – from $220</option>
               <option>Not sure — just want a quote</option>
             </select>
           </div>
